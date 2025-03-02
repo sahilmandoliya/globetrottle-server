@@ -1,4 +1,4 @@
-# Use OpenJDK 17 as the base image
+# Use OpenJDK 21 as the base image for building
 FROM eclipse-temurin:21-jdk AS build
 
 # Set working directory inside the container
@@ -16,7 +16,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Use a smaller JDK image for final deployment
-FROM eclipse-temurin:17-jdk AS runtime
+FROM eclipse-temurin:21-jdk AS runtime
 
 # Set working directory
 WORKDIR /app
